@@ -1,1 +1,16 @@
 /* útfæra */
+
+.headings__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid;
+    height: 75px;
+}
+
+.headings__toggle {
+    cursor: pointer;
+}
+
+.headings {
+    
+}

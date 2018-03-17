@@ -11,10 +11,16 @@ import NotFound from './components/not-found';
 
 class App extends Component {
   render() {
-
     return (
       <main className="app">
-        <p>útfæra</p>
+        <Navigation url="https://vefforritun2-2018-v4-synilausn.herokuapp.com/"/>
+        <section>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/:department" component={School} />
+            <Route component={NotFound} />
+          </Switch>
+        </section>
       </main>
     );
   }
