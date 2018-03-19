@@ -2,15 +2,20 @@
 
 .headings__item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     border-bottom: 2px solid;
-    height: 75px;
 }
 
 .headings__toggle {
     cursor: pointer;
 }
 
-.headings {
-    
+.headings__toggle:active {
+    background-color: #D64933;
+    border-radius: 20px;
+}
+
+.hidden {
+    display: none;
 }

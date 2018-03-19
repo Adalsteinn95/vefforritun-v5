@@ -11,17 +11,18 @@ import './School.css';
 
 export default class School extends Component {
 
-  state = { data: null, loading: true, error: false }
+  state = { data: null, loading: true, error: false}
 
   async componentDidMount() {
     try {
       const data = await this.fetchData();
-      this.setState({ data, loading: false });
+      this.setState({ data, loading: false});
     } catch (e) {
       console.error('Error fetching data', e);
       this.setState({ error: true, loading: false });
     }
   }
+
 
   async fetchData() {
     const { department } = this.props.match.params;
@@ -30,9 +31,23 @@ export default class School extends Component {
     return data.school;
   }
 
-  open(key) {
+  open  = (e) => {
+    e.preventDefault();
 
-    console.info("key");
+    var a = document.getElementById('table' + e.target.id);
+
+
+    if(a.classList.value === 'hidden') {
+      a.classList = 'show';
+    } else {
+      a.classList = 'hidden';
+    }
+
+    if(e.target.textContent[0] === '+') {
+      e.target.textContent = e.target.textContent.replace('+','-')
+    } else {
+      e.target.textContent = e.target.textContent.replace('-','+')
+    }
   }
 
   render() {
@@ -44,6 +59,7 @@ export default class School extends Component {
       loading,
       data,
       error,
+      usedData,
     } = this.state;
 
     if (loading) {
@@ -59,10 +75,38 @@ export default class School extends Component {
         <h1>{department}</h1>
         <div className="headings" >
           {data.departments.map((item, key)=>{
-            return <div className="headings__item" onClick={this.open(key)}  key={key} >
-                          <div className="headings__toggle" >+ {item.heading}</div>
-                   </div> 
-          })}
+            return (<div className="headings__item" key={key} >
+                      <div className="headings__toggle" onClick={this.open} id={key} key={key} >+ {item.heading}</div>
+                      <table id={`table${key}`} className ="hidden">
+                        <thead>
+                          <tr>
+                            <th>Auðkenni</th>
+                            <th>Námskeið</th>
+                            <th>Fjöldi</th>
+                            <th>Dagsetning</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {item.tests.map((item, key)=>{
+                            return(
+                              <tr key={key}>
+                                <td>
+                                  {item.course}
+                                </td>
+                                <td>
+                                  {item.name}
+                                </td>
+                                <td>
+                                  {item.students}
+                                </td>
+                                <td>
+                                  {item.date}
+                                </td>
+                              </tr>
+                          )})}
+                        </tbody>
+                      </table>
+                    </div>) })}
         </div>
       </section>
     );

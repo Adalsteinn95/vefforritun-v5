@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <main className="app">
-        <Navigation url="https://vefforritun2-2018-v4-synilausn.herokuapp.com/"/>
+        <Navigation url={process.env.REACT_APP_SERVICE_URL}/>
         <section>
           <Switch>
             <Route exact path="/" component={Home} />
