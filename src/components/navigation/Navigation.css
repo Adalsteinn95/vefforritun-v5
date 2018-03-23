@@ -1,1 +1,21 @@
 /* útfæra */
+
+.navigation {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.navigation__header {
+    font-size: 2em;
+    
+}
+
+.navigation__items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.navigation__item {
+    margin: 20px;
+}

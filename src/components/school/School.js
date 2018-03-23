@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import "./School.css";
 import Department from "../department/Department";
+import NotFound from "../not-found/NotFound";
 
 /**
  * Í þessum component ætti að vera mest um að vera og séð um að:
@@ -37,14 +38,15 @@ export default class School extends Component {
     return data.school;
   }
 
-  click = id => {
+  headerClick = id => {
     return e => {
-      this.setState({ visibleKey: id });
+      this.setState(prevState => ({
+        visibleKey: prevState.visibleKey === id ? null : id,
+      }));
     };
   };
 
   render() {
-    const { department } = this.props.match.params;
 
     const { loading, data, error } = this.state;
 
@@ -56,23 +58,26 @@ export default class School extends Component {
       return <div>Villa við að sækja gögn</div>;
     }
 
+    if (!data) {
+      return <NotFound />
+    }
     return (
       <section className="school">
-        <h1>{department}</h1>
+        <h1>{data.heading}</h1>
         <div className="headings">
           {data.departments.map((item, key) => {
             return (
               <div className="headings__item" key={key}>
                 <Department
                   {...item}
-                  heading={item.heading}
-                  click={this.click(key)}
+                  headerClick={this.headerClick(key)}
                   visible={this.state.visibleKey === key}
                 />
               </div>
             );
           })}
         </div>
+        <a href='/'>Heim</a>
       </section>
     );
   }

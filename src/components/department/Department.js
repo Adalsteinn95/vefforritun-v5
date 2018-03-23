@@ -14,11 +14,13 @@ export default class Exams extends Component {
     
     const display = this.props.visible ? 'block' : 'none';
 
+    const symbol = display === 'block' ? '-' : '+';
+
     return (
       <section className="department">
-        <div className="headings__toggle" onClick={this.props.click}>
-          + {heading}
-        </div>
+        <button className="headings__toggle" onClick={this.props.headerClick}>
+          {symbol} {heading}
+        </button>
         <table style={{ display }}>
           <thead>
             <tr>

@@ -1,10 +1,13 @@
 /* útfæra */
 
+.school > h1 {
+    font-size: 2em;
+}
 .headings__item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
 }
 
 .headings__toggle {
@@ -14,8 +17,4 @@
 .headings__toggle:active {
     background-color: #D64933;
     border-radius: 20px;
-}
-
-.hidden {
-    display: none;
 }
