@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { NavLink } from 'react-router-dom';
 
 import "./Navigation.css";
 
@@ -38,15 +39,15 @@ export default class Navigation extends Component {
     return (
       <nav className="navigation">
         <h1 className="navigation__header">Próftöflur</h1>
-        <div className="navigation__items">
+        <ul className="navigation__items">
           {data.map((item, key) => {
             return (
-              <div className="navigation__item" key={key}>
-                <a href={item.slug}>{item.name}</a>
-              </div>
+              <li className="navigation__item" key={key}>
+                <NavLink to={`/${item.slug}`} activeClassName='clicked'>{item.name}</NavLink>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </nav>
     );
   }

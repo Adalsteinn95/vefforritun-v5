@@ -47,7 +47,6 @@ export default class School extends Component {
   };
 
   render() {
-
     const { loading, data, error } = this.state;
 
     if (loading) {
@@ -64,7 +63,7 @@ export default class School extends Component {
     return (
       <section className="school">
         <h1>{data.heading}</h1>
-        <div className="headings">
+        <div className="headings" >
           {data.departments.map((item, key) => {
             return (
               <div className="headings__item" key={key}>
