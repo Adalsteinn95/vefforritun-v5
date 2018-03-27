@@ -7,15 +7,20 @@
 }
 .navigation__header {
     font-size: 2em;
-    
+    text-decoration: underline;
 }
 
 .navigation__items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    list-style-type: none;
 }
 
 .navigation__item {
     margin: 20px;
+}
+
+.toggled {
+    font-weight: bold;
 }

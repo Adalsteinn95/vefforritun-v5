@@ -12,22 +12,30 @@ import NotFound from "../not-found/NotFound";
  */
 
 export default class School extends Component {
+
+  static propTypes = {
+    url: PropTypes.number,
+  }
+
   state = {
     data: null,
     loading: true,
     error: false,
-    visibleKey: null
+    visibleKey: null,
+    url: null
   };
 
   async componentDidMount() {
     try {
       const data = await this.fetchData();
-      this.setState({ data, loading: false });
+      this.setState({ data, loading: false, url: this.props.match.url });
     } catch (e) {
       console.error("Error fetching data", e);
       this.setState({ error: true, loading: false });
     }
   }
+
+
 
   async fetchData() {
     const { department } = this.props.match.params;
@@ -49,6 +57,12 @@ export default class School extends Component {
   render() {
     const { loading, data, error } = this.state;
 
+  
+
+    if (this.state.url !== this.props.match.url) {
+      this.componentDidMount();
+    }
+
     if (loading) {
       return <div>Sæki gögn...</div>;
     }
@@ -69,6 +83,7 @@ export default class School extends Component {
               <div className="headings__item" key={key}>
                 <Department
                   {...item}
+                  key={key}
                   headerClick={this.headerClick(key)}
                   visible={this.state.visibleKey === key}
                 />
@@ -76,7 +91,6 @@ export default class School extends Component {
             );
           })}
         </div>
-        <a href='/'>Heim</a>
       </section>
     );
   }

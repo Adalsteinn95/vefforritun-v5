@@ -1,41 +1,51 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 
-import './Home.css';
+import "./Home.css";
 
 /* hér ætti að sækja forsíðu vefþjónustu til að sækja stats */
 
 export default class Home extends Component {
-
-  state = { data: null, loading: true, error: false}
+  state = { data: null, loading: true, error: false };
 
   async componentDidMount() {
     try {
       const data = await this.fetchStats();
       this.setState({ data, loading: false });
     } catch (e) {
-      console.error('Error fetching data', e);
+      console.error("Error fetching data", e);
       this.setState({ error: true, loading: false });
     }
   }
 
   async fetchStats() {
-    const { url } = this.props;
-    const response = await fetch('https://vefforritun2-2018-v4-synilausn.herokuapp.com/stats');
+    const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}stats`);
     const data = await response.json();
     return data.stats;
   }
-  render() {
 
+  render() {
     const { data, loading, error } = this.state;
 
-    if(loading) {
-      return (<div>Waiting....</div>)
+    if (loading) {
+      return (
+        <div>
+          <p>Waiting....</p>
+          <Helmet title="wait for" />
+        </div>
+      );
     }
 
-    if(error) {
-      return (<div>ERRORROROOR</div>)
+    if (error) {
+      return (
+        <div>
+          <p>Villa við að sækja gögn</p>
+          <Helmet title="Villa">
+            <style>{`body { background-color: red; }`}</style>
+          </Helmet>
+        </div>
+      );
     }
     return (
       <div className="home">

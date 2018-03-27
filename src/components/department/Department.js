@@ -9,9 +9,17 @@ import "./Department.css";
  */
 
 export default class Exams extends Component {
+
+  static propTypes = {
+    visible: PropTypes.bool,
+    tests: PropTypes.array,
+    heading: PropTypes.string,
+    headerClick: PropTypes.func,
+  }
+
   render() {
     const { tests, heading } = this.props;
-    
+
     const display = this.props.visible ? 'block' : 'none';
 
     const symbol = display === 'block' ? '-' : '+';

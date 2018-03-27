@@ -1,1 +1,32 @@
 /* útfæra */
+
+button {
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
+    margin: 20px 0;
+}
+
+.headings__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid;
+}
+
+.department table {
+    margin-bottom: 20px;
+}
+
+.department table th{
+    text-align: left;
+    padding-right: 20px;
+}
+
+.department table tbody tr:nth-child(2n) {
+    background-color: #eee;
+}
+
+.department table tbody tr > td {
+    padding: 10px;
+}
