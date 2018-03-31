@@ -35,6 +35,16 @@ export default class School extends Component {
     }
   }
 
+  async componentWillReceiveProps() {
+    try {
+      const data = await this.fetchData();
+      this.setState({ data, loading: false, url: this.props.match.url });
+    } catch (e) {
+      console.error("Error fetching data", e);
+      this.setState({ error: true, loading: false });
+    }
+  }
+
 
 
   async fetchData() {
@@ -60,7 +70,7 @@ export default class School extends Component {
   
 
     if (this.state.url !== this.props.match.url) {
-      this.componentDidMount();
+      this.componentWillReceiveProps();
     }
 
     if (loading) {
@@ -74,6 +84,7 @@ export default class School extends Component {
     if (!data) {
       return <NotFound />
     }
+
     return (
       <section className="school">
         <h1>{data.heading}</h1>
