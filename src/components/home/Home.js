@@ -39,7 +39,7 @@ export default class Home extends Component {
     if (error) {
       return (
         <div>
-          <p>Villa við að sækja gögn</p>
+          <p>Villa við að sækja gögn!</p>
           <Helmet title="Villa">
             <style>{`body { background-color: red; }`}</style>
           </Helmet>

@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <main className="app">
-        <Helmet defaultTitle='Forsíða' titleTemplate='%s Próf'>
+        <Helmet defaultTitle='Forsíða' titleTemplate='%s - Próf'>
           <html lang='is'/>
         </Helmet>
         <Navigation url={process.env.REACT_APP_SERVICE_URL} />
