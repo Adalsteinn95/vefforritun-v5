@@ -19,7 +19,7 @@ export default class Home extends Component {
   }
 
   async fetchStats() {
-    const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}stats`);
+    const response = await fetch(`${process.env.REACT_APP_SERVICE_URL}/stats`);
     const data = await response.json();
     return data.stats;
   }

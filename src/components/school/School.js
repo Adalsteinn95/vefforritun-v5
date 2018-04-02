@@ -48,7 +48,7 @@ export default class School extends Component {
   async fetchData() {
     const { department } = this.props.match.params;
     const response = await fetch(
-      `${process.env.REACT_APP_SERVICE_URL}${department}`
+      `${process.env.REACT_APP_SERVICE_URL}/${department}`
     );
 
     const data = await response.json();
