@@ -5,6 +5,7 @@ import "./School.css";
 import Department from "../department/Department";
 import NotFound from "../not-found/NotFound";
 import Helmet from "react-helmet";
+import { Link } from "react-router-dom";
 
 /**
  * Í þessum component ætti að vera mest um að vera og séð um að:
@@ -96,6 +97,9 @@ export default class School extends Component {
 
     return (
       <section className="school">
+          <Helmet title={data.heading}>
+            
+          </Helmet>
         <h1>{data.heading}</h1>
         <div className="headings">
           {data.departments.map((item, key) => {
@@ -110,6 +114,11 @@ export default class School extends Component {
               </div>
             );
           })}
+        </div>
+        <div className='home--button' >
+          <Link to="/">
+            Heim
+          </Link>
         </div>
       </section>
     );

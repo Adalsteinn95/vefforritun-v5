@@ -24,11 +24,6 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </section>
-        <div className='home--button' >
-          <Link to="/">
-            Heim
-          </Link>
-        </div>
       </main>
     );
   }
