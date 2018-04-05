@@ -15,7 +15,8 @@ import { Link } from "react-router-dom";
 
 export default class School extends Component {
   static propTypes = {
-    url: PropTypes.number
+    url: PropTypes.number,
+    department: PropTypes.string
   };
 
   state = {
