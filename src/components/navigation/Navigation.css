@@ -6,11 +6,12 @@
     flex-direction: column;
 }
 .navigation__header {
-    font-size: 2em;
+    font-size: 3em;
     text-decoration: underline;
 }
 
 .navigation__items {
+    font-size: 1em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
